@@ -45,3 +45,48 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 docker-compose exec web python manage.py dumpdata > fixtures.json
 ```
+
+### Загрузите данные из fixtures в БД
+```
+python manage.py loaddata fixtures.json
+```
+
+### Примеры запросов
+
+#### Получение списка всех произведений:
+**GET _/api/v1/titles/_**
+
+*Пример ответа:*
+```
+[
+  {
+    "count": 0,
+    "next": "string",
+    "previous": "string",
+    "results": [
+      {
+        "name": "string",
+        "slug": "string"
+      }
+    ]
+  }
+]
+```
+
+#### Добавление произведения:
+**POST _/api/v1/titles/_**
+```
+{
+  "name": "string",
+  "year": 0,
+  "description": "string",
+  "genre": [
+    "string"
+  ],
+  "category": "string"
+}
+```
+
+
+### Автор:
+> - Дмитриев Алексей 
